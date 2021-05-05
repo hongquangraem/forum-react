@@ -7,12 +7,16 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "antd": "^4.15.4",
     "connected-react-router": "^6.9.1",
+    "customize-cra": "^1.0.0",
     "history": "^5.0.0",
+    "less": "^4.1.1",
+    "less-loader": "5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
-    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux-devtools-extension": "^2.13.9",
     "redux-persist": "^6.0.0",
@@ -21,10 +25,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
     "precommit": "lint-staged",
     "lint": "eslint . && echo 'Lint complete!'",
     "lint:fix": "eslint --fix . && echo 'Lint fixed complete!'",
@@ -59,7 +63,8 @@
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.0"
+    "pretty-quick": "^3.1.0",
+    "react-app-rewired": "^2.1.8"
   },
   "husky": {
     "hooks": {

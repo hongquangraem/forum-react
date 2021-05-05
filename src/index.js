@@ -4,10 +4,10 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ThemeProvider } from 'styled-components'
 
-import './index.css'
-import store, { persistor } from './store'
 import App from './App'
 import { AppTheme } from './theme'
+import store, { persistor } from './store'
+import './style.less'
 import { history } from './utils/history'
 
 ReactDOM.render(

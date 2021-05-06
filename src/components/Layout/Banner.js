@@ -6,7 +6,6 @@ function Banner() {
   return (
     <img
       style={{
-        paddingTop: 48,
         width: '100%',
         height: 350,
         objectFit: 'cover',

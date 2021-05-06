@@ -3,23 +3,35 @@ import React, { Suspense } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import ScrollToTop from './components/Layout/ScrollToTop'
-import Nav from './components/Layout/Nav'
+import Header from './components/Layout/Header'
 import Login from './components/Auth/Login'
-import Banner from './components/Layout/Banner'
+import GeneralLayout from './components/Layout/GeneralLayout'
 
 function App({ history }) {
   return (
     <ConnectedRouter history={history}>
       <ScrollToTop />
       <Suspense fallback={<h1>Loading....</h1>}>
-        <Nav />
-        <Banner />
-        <div style={{ paddingTop: 60 }}>
-          <Switch>
-            <Route path="/login" render={props => <Login {...props} />} />
-            <Route path="/abc" render={() => <div>xxx</div>} />
-          </Switch>
-        </div>
+        <Header />
+        <Switch>
+          <Route
+            path="/"
+            render={props => (
+              <GeneralLayout>
+                <Login {...props} />
+              </GeneralLayout>
+            )}
+          />
+          <Route
+            path="/stream"
+            render={props => (
+              <GeneralLayout>
+                <Login {...props} />
+              </GeneralLayout>
+            )}
+          />
+          <Route path="/abc" render={() => <div>xxx</div>} />
+        </Switch>
       </Suspense>
     </ConnectedRouter>
   )

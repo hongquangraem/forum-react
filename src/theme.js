@@ -2,7 +2,7 @@ export const AppTheme = {
   colors: {
     primary: '#4E54E7',
     primaryLight: '#A0B4FB',
-    background: '#eeeff5',
+    background: '#f9f9fd',
     black: '#111533',
     white: '#ffffff',
     red: '#F44336',

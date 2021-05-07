@@ -7,6 +7,9 @@ import { ReactComponent as HeadphonesIcon } from '../../assets/icon/headphones.s
 import { ReactComponent as DiscussionIcon } from '../../assets/icon/conversation.svg'
 import { ReactComponent as BloggingIcon } from '../../assets/icon/blog.svg'
 import { ReactComponent as ReviewIcon } from '../../assets/icon/review.svg'
+import { ReactComponent as MovieReviewIcon } from '../../assets/icon/moviereview.svg'
+import { ReactComponent as FoodReviewIcon } from '../../assets/icon/foodreview.svg'
+import { ReactComponent as BookReviewIcon } from '../../assets/icon/bookreview.svg'
 
 const { SubMenu } = Menu
 
@@ -72,9 +75,33 @@ function Navigation() {
             </WrapperIcon>
           }
           title="Review">
-          <Menu.Item key="book">Book</Menu.Item>
-          <Menu.Item key="food">Food</Menu.Item>
-          <Menu.Item key="movie">Movie</Menu.Item>
+          <Menu.Item
+            key="book"
+            icon={
+              <WrapperIcon>
+                <BookReviewIcon className="icon" />
+              </WrapperIcon>
+            }>
+            Book
+          </Menu.Item>
+          <Menu.Item
+            key="food"
+            icon={
+              <WrapperIcon>
+                <FoodReviewIcon className="icon" />
+              </WrapperIcon>
+            }>
+            Food
+          </Menu.Item>
+          <Menu.Item
+            key="movie"
+            icon={
+              <WrapperIcon>
+                <MovieReviewIcon className="icon" />
+              </WrapperIcon>
+            }>
+            Movie
+          </Menu.Item>
         </StyledSubMenu>
         <StyledMenuItem
           key="audio"

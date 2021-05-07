@@ -14,11 +14,9 @@ const Wrap = styled.div`
 `
 const StyledHeader = styled(HeaderAntD)`
   background-color: #fff;
-  border-bottom: 2px solid red;
   height: 48px;
   line-height: 48px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1),
-    0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: ${({ theme }) => theme.boxShadow.general};
 `
 
 const Logo = styled.div`

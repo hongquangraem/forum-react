@@ -4,13 +4,14 @@ import { Layout } from 'antd'
 
 import Banner from './Banner'
 import TrendingMediaList from '../TrendingMedia/TrendingMediaList'
-import Navigation from '../Navigation'
+import Navigation from '../Navigation/Navigation'
 import PostList from '../Post/PostList'
 
 const { Content, Sider } = Layout
 
 const Wrapper = styled.div`
   padding-top: 48px;
+  height: 1000px;
 `
 
 const WrapperLayout = styled.div`
@@ -24,7 +25,6 @@ const StyledLayout = styled(Layout)`
 const StyledContent = styled(Content)`
   display: flex;
   flex-direction: column;
-  background-color: green;
   margin-right: 60px;
 `
 

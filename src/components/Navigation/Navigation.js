@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Menu } from 'antd'
 import styled from 'styled-components'
 
@@ -37,81 +37,53 @@ const StyledSubMenu = styled(SubMenu)`
 
 const WrapperIcon = styled.span``
 
-function Navigation() {
-  const [currentTab, setCurrentTab] = useState('1')
-  const handleClick = e => {
-    setCurrentTab(e.key)
-  }
-
+function Navigation({ menus, currentMenu, handleClickMenu }) {
   return (
     <Wrapper>
       <StyledMenu
-        onClick={handleClick}
-        selectedKeys={[currentTab]}
+        onClick={({ key }) => handleClickMenu(key)}
+        selectedKeys={[currentMenu]}
         mode="horizontal">
-        <StyledMenuItem
-          key="discussion"
-          icon={
-            <WrapperIcon>
-              <DiscussionIcon className="icon" />
-            </WrapperIcon>
-          }>
-          Discussion
-        </StyledMenuItem>
-        <StyledMenuItem
-          key="blog"
-          icon={
-            <WrapperIcon>
-              <BloggingIcon className="icon" />
-            </WrapperIcon>
-          }>
-          Blog
-        </StyledMenuItem>
-        <StyledSubMenu
-          key="review"
-          icon={
-            <WrapperIcon>
-              <ReviewIcon className="icon" style={{ marginRight: '10px' }} />
-            </WrapperIcon>
+        {menus.map(({ type, key, name, IconComponent, menuItems = [] }) => {
+          if (type === 'menuItem') {
+            return (
+              <StyledMenuItem
+                key={key}
+                icon={
+                  <WrapperIcon>
+                    <IconComponent className="icon" />
+                  </WrapperIcon>
+                }>
+                {name}
+              </StyledMenuItem>
+            )
           }
-          title="Review">
-          <Menu.Item
-            key="book"
-            icon={
-              <WrapperIcon>
-                <BookReviewIcon className="icon" />
-              </WrapperIcon>
-            }>
-            Book
-          </Menu.Item>
-          <Menu.Item
-            key="food"
-            icon={
-              <WrapperIcon>
-                <FoodReviewIcon className="icon" />
-              </WrapperIcon>
-            }>
-            Food
-          </Menu.Item>
-          <Menu.Item
-            key="movie"
-            icon={
-              <WrapperIcon>
-                <MovieReviewIcon className="icon" />
-              </WrapperIcon>
-            }>
-            Movie
-          </Menu.Item>
-        </StyledSubMenu>
-        <StyledMenuItem
-          key="audio"
-          icon={
-            <WrapperIcon>
-              <HeadphonesIcon className="icon" />
-            </WrapperIcon>
-          }>
-          Audio
-        </StyledMenuItem>
+          return (
+            <StyledSubMenu
+              onTitleClick={props => handleClickMenu(props.key)}
+              key={key}
+              icon={
+                <WrapperIcon>
+                  <IconComponent className="icon" style={{ marginRight: 15 }} />
+                </WrapperIcon>
+              }
+              title={name}>
+              {menuItems.map(item => (
+                <Menu.Item
+                  key={item.key}
+                  icon={
+                    <WrapperIcon>
+                      <item.IconComponent className="icon" />
+                    </WrapperIcon>
+                  }>
+                  {item.name}
+                </Menu.Item>
+              ))}
+              {/* </Menu.ItemGroup> */}
+            </StyledSubMenu>
+            // </StyledMenuItem>
+          )
+        })}
       </StyledMenu>
     </Wrapper>
   )

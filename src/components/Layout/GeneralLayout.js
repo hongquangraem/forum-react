@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Layout } from 'antd'
+import { Col, Row } from 'antd'
 import MENUS from './menus'
 
 import Banner from './Banner'
 import TrendingMediaList from '../TrendingMedia/TrendingMediaList'
 import Navigation from '../Navigation/Navigation'
 import PostList from '../Post/PostList'
-
-const { Content, Sider } = Layout
 
 const Wrapper = styled.div`
   padding-top: 48px;
@@ -19,17 +17,11 @@ const WrapperLayout = styled.div`
   padding: 50px;
 `
 
-const StyledLayout = styled(Layout)`
-  background-color: ${({ theme }) => theme.colors.background};
-`
+const StyledLayout = styled(Row)``
 
-const StyledContent = styled(Content)`
-  display: flex;
-  flex-direction: column;
-  margin-right: 60px;
-`
+const StyledContent = styled(Col)``
 
-const StyledSider = styled(Sider)`
+const StyledSider = styled(Col)`
   display: flex;
   flex-direction: column;
   flex: 0 0 420px !important;
@@ -50,7 +42,7 @@ function GeneralLayout() {
       <TrendingMediaList />
       <WrapperLayout>
         <StyledLayout>
-          <StyledContent>
+          <StyledContent xxl={{ span: 14, offset: 2 }}>
             <Navigation
               handleClickMenu={handleClickMenu}
               menus={MENUS}
@@ -58,7 +50,7 @@ function GeneralLayout() {
             />
             <PostList currentMenu={currentMenu} />
           </StyledContent>
-          <StyledSider>
+          <StyledSider xl={{ span: 4, offset: 2 }}>
             <div className="topUserRanks">TopUserRanks</div>
             <div className="topTagRanks">topTagRanks</div>
             <div className="mostViewRanks">mostViewRanks</div>

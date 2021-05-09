@@ -1,52 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Skeleton, Card, Row, Col } from 'antd'
+import { Skeleton, Row, Col } from 'antd'
 import { Link } from 'react-router-dom'
-import UserPreview from '../../User/UserPreview'
 
-import { PostTitle, PostBrief } from '../style'
+import UserPreview from '../../User/UserPreview'
+import { PostTitle, PostBrief, PostContent, StyledCard } from '../style'
 import { LIMIT_POST_BRIEF, LIMIT_POST_TITLE } from '../../../constants'
 import CustomTag from '../../shared/CustomTag'
 import PostStatistics from '../../shared/PostStatistics'
+import { limitText } from '../../../utils/common'
 
 const Wrapper = styled.div`
   margin-bottom: 40px;
-  height: 100%;
-`
-
-const StyledCard = styled(Card)`
-  width: 100%;
-  height: 260px;
-
-  & .ant-card-body {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-
-    div {
-      // flex: 1
-    }
-  }
-
-  box-shadow: ${({ theme }) => theme.boxShadow.general};
 `
 
 const PostContentWrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: row;
 `
 
-const PostContent = styled.div`
-  width: 85%;
-  word-wrap: break-word;
-`
-
 const PostAuthor = styled.div`
-  width: 20%;
-  margin-left: 30px;
   height: 100%;
+  margin-left: 30px;
+  flex: 1;
 `
 
 const StyledSkeleton = styled(Skeleton)`
@@ -60,18 +36,9 @@ const StyledSkeleton = styled(Skeleton)`
 
 function DiscussionCard({ data }) {
   const loading = false
-  const limitText = (text, maxLength) => {
-    let standardizedText = text
-    if (text.length > maxLength) {
-      const splittedText = text.split(' ')
-      standardizedText = `${splittedText.slice(0, maxLength).join(' ')}...`
-    }
-
-    return standardizedText
-  }
   return (
     <Wrapper>
-      <StyledCard>
+      <StyledCard height="265">
         {loading && (
           <StyledSkeleton
             active
@@ -83,7 +50,7 @@ function DiscussionCard({ data }) {
           <>
             <PostContentWrapper>
               <PostContent>
-                <PostTitle href="/">
+                <PostTitle to="/">
                   {limitText(data.topic, LIMIT_POST_TITLE)}
                 </PostTitle>
                 <PostBrief>
@@ -92,7 +59,7 @@ function DiscussionCard({ data }) {
               </PostContent>
               <PostAuthor>
                 <UserPreview
-                  avatarUrl="https://www.flaticon.com/svg/vstatic/svg/4134/4134018.svg?token=exp=1620463847~hmac=a5d5a04ddf1e90dba3a3a5d08f68a910"
+                  avatarUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPkwYQuTYcqB7wnAvzApNYO2MLl_Llz4RyyA&usqp=CAU"
                   username={data.author.name}
                 />
               </PostAuthor>
@@ -103,8 +70,8 @@ function DiscussionCard({ data }) {
               </Col>
               <Col span={10}>
                 {data.tags.slice(0, 3).map(tag => (
-                  <Link href="/">
-                    <CustomTag key={tag} name={tag} />
+                  <Link key={tag} to="/">
+                    <CustomTag name={tag} />
                   </Link>
                 ))}
               </Col>

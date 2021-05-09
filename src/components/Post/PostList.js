@@ -10,7 +10,6 @@ import MovieReviewList from './Review/MovieReviewList'
 
 const Wrapper = styled.div`
   margin: 50px;
-  height: 1000px;
   display: flex;
   flex-direction: column;
 `
